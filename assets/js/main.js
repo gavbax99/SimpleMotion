@@ -3,8 +3,8 @@ const animInterval = 200;
 const scrollIntoViewDenom = 0.85;
 
 
-// setup anim array
-let animElementArr = document.querySelectorAll("[data-sm]");
+// master array of animated elements
+let animElementArr = [...document.querySelectorAll("[data-sm]")];
 
 
 // set ease type, opacity, ease type
@@ -37,33 +37,24 @@ setInterval(() => {
 
 scrollFadeHandler = () => {
     const windowInnerHeight = window.innerHeight;
-    console.log(window.pageYOffset);
 
     // for each element in the nodelist, check to see if it should be rendered
-    [...animElementArr].forEach((ele, i) => {
-
-
+    animElementArr.forEach((ele, i) => {
         let eleTop = ele.getBoundingClientRect().top + window.scrollY;
         let eleOffset = ele.getAttribute("data-sm-dist") != null ? ele.getAttribute("data-sm-dist") : 0;
-
-
         if (window.scrollY > (eleTop - eleOffset - (windowInnerHeight * scrollIntoViewDenom))) {
             ele.style.opacity= "1";
             ele.style.transform = "translate(0, 0)";
             ele.setAttribute("data-sm", "complete");
         }
     });
-    
 
-    // then remove it/the group from the array
-    // animElementArr = [...animElementArr].filter.call(ele => {
-    //     console.log(ele.getAttribute("data-sm", "complete"))
-    //     return ele.getAttribute("data-sm", "complete");
-    // });
+    // remove the rendered elements from the master array
+    animElementArr = animElementArr.filter(ele => {
+        return ele.getAttribute("data-sm") != "complete";
+    });
 
-
-    // animElementArr = [].slice.call(animElementArr, counter);
-    // console.log(animElementArr);
+    console.log(animElementArr);
 };
 
 

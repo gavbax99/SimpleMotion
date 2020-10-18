@@ -1,6 +1,7 @@
 // constants
 const animInterval = 200;
-const scrollIntoViewDenom = 0.85;
+const scrollIntoViewDenom = 0.8;
+const defaultDistance = 40;
 
 
 // master array of animated elements
@@ -15,7 +16,7 @@ animElementArr.forEach(ele => {
 
     ele.style.transitionTimingFunction = eastType ? `${eastType}` : "ease-out";
     ele.style.opacity= startingOpacity ? `${startingOpacity}` : "0";
-    ele.style.transform = distanceToTravel ? `translate(0, ${distanceToTravel}px)` : "translate(0, 40px)";
+    ele.style.transform = distanceToTravel ? `translate(0, ${distanceToTravel}px)` : `translate(0, ${defaultDistance}px)`;
 });
 
 
@@ -41,7 +42,7 @@ scrollFadeHandler = () => {
     // for each element in the nodelist, check to see if it should be rendered
     animElementArr.forEach((ele, i) => {
         let eleTop = ele.getBoundingClientRect().top + window.scrollY;
-        let eleOffset = ele.getAttribute("data-sm-dist") != null ? ele.getAttribute("data-sm-dist") : 0;
+        let eleOffset = ele.getAttribute("data-sm-dist") != null ? ele.getAttribute("data-sm-dist") : defaultDistance;
         if (window.scrollY > (eleTop - eleOffset - (windowInnerHeight * scrollIntoViewDenom))) {
             ele.style.opacity= "1";
             ele.style.transform = "translate(0, 0)";

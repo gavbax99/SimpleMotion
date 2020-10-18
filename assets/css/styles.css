@@ -66,7 +66,7 @@ body {
 
 .container {
   border: 1px solid black;
-  padding: 4rem;
+  padding: 0 4rem;
   display: flex;
 }
 
@@ -74,6 +74,8 @@ body {
   border: 1px solid blue;
   display: flex;
   width: 100%;
+  margin-bottom:20px;
+  margin-top: 10px;
 }
 
 .first p {

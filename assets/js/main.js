@@ -1,22 +1,33 @@
 // constants
 const animInterval = 200;
-const scrollIntoViewDenom = 0.8;
-const defaultDistance = 40;
+const revealPosition = 0.85;
 
 
-// master array of animated elements
-let animElementArr = [...document.querySelectorAll("[data-sm]")];
+// setup anim array
+let animElementArr = document.querySelectorAll("[data-sm]");
 
 
-// set ease type, opacity, ease type
+// setup anim effects for the nodelist
 animElementArr.forEach(ele => {
+    const transitionTime = ele.getAttribute("data-sm-time");
     const eastType = ele.getAttribute("data-sm-ease");
     const startingOpacity = ele.getAttribute("data-sm-opac");
-    const distanceToTravel = ele.getAttribute("data-sm-dist");    
+    const distanceToTravel = ele.getAttribute("data-sm-dist");
+    // delay before anim starts
 
-    ele.style.transitionTimingFunction = eastType ? `${eastType}` : "ease-out";
+
+
+    // Set ease type, starting opacity, distance to travel, and ease timing
+    ele.style.transitionTimingFunction = eastType ? `${eastType}` : "ease-in";
     ele.style.opacity= startingOpacity ? `${startingOpacity}` : "0";
-    ele.style.transform = distanceToTravel ? `translate(0, ${distanceToTravel}px)` : `translate(0, ${defaultDistance}px)`;
+    ele.style.transform = distanceToTravel ? `translate(0, ${distanceToTravel})` : "translate(0, 40px)";
+    ele.style.transition = transitionTime ? `transform ${transitionTime}` : "transform 750ms";
+    // ele.style.
+});
+
+animElementArr.forEach(ele => {
+    const transitionTime = ele.getAttribute("data-sm-time");
+    ele.style.transition = transitionTime ? `all ${transitionTime}` : "all 750ms";
 });
 
 
@@ -27,45 +38,36 @@ window.addEventListener("scroll", function(e) {
 });
 
 
-// when scrolling, fire f{scrollFadeHandler} every ${animInterval}
+// when scrolling, fire f{scrollHandler} every ${animInterval}
 setInterval(() => {
     if (scrolling) {
         scrolling = false;
-        scrollFadeHandler();
-    }
+        scrollHandler();
+    };
 }, animInterval);
 
 
-scrollFadeHandler = () => {
+scrollHandler = () => {
     const windowInnerHeight = window.innerHeight;
 
-    // for each element in the nodelist, check to see if it should be rendered
-    animElementArr.forEach((ele, i) => {
-        let eleTop = ele.getBoundingClientRect().top + window.scrollY;
-        let eleOffset = ele.getAttribute("data-sm-dist") != null ? ele.getAttribute("data-sm-dist") : defaultDistance;
-        if (window.scrollY > (eleTop - eleOffset - (windowInnerHeight * scrollIntoViewDenom))) {
+    // counter to determine what to remove from the array
+    let counter = 0;
+    
+    // for each element in the nodelist, check to see if it 
+    // should be faded. if so, fade it in and increment the counter
+    [...animElementArr].forEach(ele => {
+        eleTop = ele.getBoundingClientRect().top + window.scrollY;
+
+        //if 
+        if (window.scrollY > (eleTop - windowInnerHeight * revealPosition)) {
             ele.style.opacity= "1";
             ele.style.transform = "translate(0, 0)";
-            ele.setAttribute("data-sm", "complete");
-        }
+            counter++;
+        };
     });
 
-    // remove the rendered elements from the master array
-    animElementArr = animElementArr.filter(ele => {
-        return ele.getAttribute("data-sm") != "complete";
-    });
-
-    console.log(animElementArr);
-};
-
-
-// late setup for transition on our elements
-window.onload = () => {
-    animElementArr.forEach(ele => {
-        const transitionTime = ele.getAttribute("data-sm-time");
-        ele.style.transition = transitionTime ? `all ${transitionTime}` : "all 750ms"
-    });
-
-    // fire the scroll handler once to load items that have been scrolled into view on refresh
-    scrollFadeHandler();
+    // then remove it/the group from the array
+    animElementArr = [].slice.call(animElementArr, counter);
 }
+
+scrollHandler();

@@ -92,3 +92,11 @@ body {
   transition: 1s ease-out;
 } */
 
+
+.test {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	transition: 2s;
+	transform: translate(2rem, 0);
+}

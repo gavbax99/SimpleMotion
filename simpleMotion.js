@@ -55,15 +55,13 @@ window.onload = function() {
 			const distanceOffsetY = ele.getAttribute("data-sm-dist-y") ? ele.getAttribute("data-sm-dist-y") : def_distanceToTravelY;
 			
 			if (window.scrollY > (eleTop - (windowInnerHeight * revealPosition) - distanceOffsetY)) {
-				const animationTime     = ele.getAttribute("data-sm-time") ? ele.getAttribute("data-sm-time") : def_animationTime;
-				const animationEaseType = ele.getAttribute("data-sm-ease") ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
-				const finalOpacity      = ele.getAttribute("data-sm-final-opac") ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
-				const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
+				const delay = ele.getAttribute("data-sm-delay");
 
-				ele.style.transition               = animationTime;
-				ele.style.transitionTimingFunction = animationEaseType;
-				ele.style.opacity                  = finalOpacity;
-				ele.style.transform                = finalTransform;
+				if (delay) {
+					setTimeout(() => {animateElement(ele)}, delay);
+				} else {
+					animateElement(ele);
+				}
 
 				counter++
 			};
@@ -74,6 +72,19 @@ window.onload = function() {
 
 		// When all SimpleMotion elements have been animated and the nodelist is empty, clear our scrollInterval
 		if (animElementArr.length <= 0) clearInterval(scrollInterval);
+	};
+
+	// Animating the element
+	animateElement = (ele) => {
+		const animationTime     = ele.getAttribute("data-sm-time") ? ele.getAttribute("data-sm-time") : def_animationTime;
+		const animationEaseType = ele.getAttribute("data-sm-ease") ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
+		const finalOpacity      = ele.getAttribute("data-sm-final-opac") ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
+		const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
+
+		ele.style.transition               = animationTime;
+		ele.style.transitionTimingFunction = animationEaseType;
+		ele.style.opacity                  = finalOpacity;
+		ele.style.transform                = finalTransform;
 	};
 
 	// Fire handleAnimation on page load to animate any in-view SimpleMotion elements before the user scrolls

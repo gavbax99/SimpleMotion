@@ -10,16 +10,56 @@
     <!-- Page information -->
     <title>SimpleMotion</title>
     <meta name="description" content="SimpleMotion is a simple way to animate HTML elements into view while the user scrolls.">
-    <meta name="author" content="Gavin Baxter | www.gavinbaxter.com">
+	<meta name="author" content="Gavin Baxter | www.gavinbaxter.com">
+	<link rel="icon" type="image/png" href="./assets/favicon.png">
 
-    <!-- Style links -->
+	<!-- Style links -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
 </head>
 
 <body>
 
+	<!-- Preloader -->
+	<div class="preload"></div>
+
+	<!-- Hero -->
+	<section class="flex-full flex-col flex-jc-fs hero-section">
+
+		<!-- Title container -->
+		<div class="flex-full flex-row hero-container">
+			<img class="hero-logo" src="./assets/images/logo_color.png" />
+			<div class="flex-full flex-col flex-ai-fs flex-jc-fs hero-title-container">
+				<div data-sm class="flex-full flex-col flex-ai-fs flex-jc-fs hero-title">
+					<h1 class="fs-1">SimpleMotion</h1>
+					<div class="hero-title-line"></div>
+				</div>
+				<p class="flex-full flex-jc-fs hero-subtitle">
+					<span data-sm data-sm-delay="200">A simple&nbsp;</span>
+					<span data-sm data-sm-delay="350">JavaScipt library&nbsp;</span>
+					<span data-sm data-sm-delay="500">to animate&nbsp;</span>
+					<span data-sm data-sm-delay="650">HTML elements&nbsp;</span>
+					<span data-sm data-sm-delay="800">on-scroll.&nbsp;</span>
+				</p>
+				<a data-sm data-sm-delay="1000" class="flex-full flex-row hero-github-link" href="https://github.com/gavbax99/SimpleMotion" target="_blank">
+					View on Github
+					<img class="github-icon" src="./assets/images/github-logo_white.svg" />
+				</a>
+			</div>
+		</div>
+
+		<!-- Scroll down arrow -->
+		<div data-sm data-sm-delay="1500" data-sm-dist-y="0" class="flex-full flex-col hero-arrow-container">
+			<p class="hero-arrow-text">Scroll down!</p>
+			<img class="hero-arrow" src="./assets/images/down-arrow.svg"/>
+		</div>
+
+		<!-- SVG background -->
+	</section>
 
     <!-- Javascript links -->
+    <script src="./assets/preload.js"></script>
     <script src="./simpleMotion.js"></script>
 
 </body>

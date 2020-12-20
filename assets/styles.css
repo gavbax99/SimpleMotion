@@ -81,12 +81,27 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 	align-items: center;
 }
 
-.flex-row {
-	flex-direction: row;
-}
+.flex-row {	flex-direction: row; }
+.flex-col {	flex-direction: column; }
+.flex-ai-fs { align-items: flex-start; }
+.flex-ai-fe { align-items: flex-end; }
+.flex-jc-fs { justify-content: flex-start; }
+.flex-jc-fe { justify-content: flex-end; }
+.flex-jc-sb { justify-content: space-between; }
 
-.flex-col {
-	flex-direction: column;
+.color-primary { color: #0098ff; }
+.color-bg-primary { background-color: #0098ff; }
+.color-accent { background-color: #5214e9; }
+.color-bg-accent { background-color: #5214e9; }
+
+.w-100 { width: 100%; }
+
+.fs-1 { font-size: 2.5rem; }
+
+@keyframes arrow {
+	0%   { padding-top: 0; }
+	50%  { padding-top: 1rem; }
+	100% { padding-top: 0; }
 }
 
 /* 1. ***************         SETUP         ****************** */
@@ -94,46 +109,148 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 
 html {
 	background-color: #fff;
-	font-size: 16px;
+	font-size: 18px;
 	color: #252525;
-	font-family: sans-serif;
+	font-family: 'Varela Round', sans-serif;;
+}
+
+html, body {
+	overflow: hidden;
+}
+
+.preload {
+	background-color: #fff;
+	transition: 333ms;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99999;
 }
 
 /* 1. ***************         STYLES        ****************** */
 /* *********************************************************** */
 
-.container {
-	/* border: 1px solid black; */
-	padding: 4rem;
-	display: flex;
-}
+/* HERO */
 
-.first {
-	/* border: 1px solid blue; */
-	display: flex;
+.hero-section {
 	width: 100%;
+	height: 100vh;
+	background: url("./images/blue-swoosh-1.svg") bottom center;
+	background-repeat: no-repeat;
 }
 
-.first p {
-	/* border: 1px solid red; */
-	flex: 1;
-	padding: 1rem 0;
-	text-align: center;
+.hero-container {
+	width: 100%;
+	height: 50vh;
 }
 
-/* .pre-anim {
-  opacity: 0;
-  transform: translate(0, 40px);
+.hero-logo {
+	width: 200px;
+	margin-right: 2rem;
 }
 
-.anim-transition {
-  transition: 1s ease-out;
-} */
+.hero-title-container {
+	width: 542px;
+}
 
-.test {
-	width: 100px;
-	height: 100px;
-	background-color: red;
-	transition: 2s;
-	transform: translate(2rem, 0);
+.hero-title {
+	margin-bottom: 0.5rem;
+}
+
+h1 {
+	text-shadow: #fff 3px 0px 0px,#fff -3px 0px 0px;
+	-webkit-font-smoothing: antialiased;
+	z-index: 999;
+}
+
+.hero-title-line {
+	width: 296px;
+	height: 4px;
+	border-radius: 5px;
+	transform: translate(0, -5px);
+	background: #0098ff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #0098ff 0%, #5214e9 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #0098ff 0%,#5214e9 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #0098ff 0%,#5214e9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0098ff', endColorstr='#5214e9',GradientType=1 ); /* IE6-9 */
+}
+
+.hero-subtitle {
+	flex-wrap: wrap;
+	text-align: left;
+	margin-bottom: 1rem;
+}
+
+.hero-github-link,
+.hero-github-link:visited,
+.hero-github-link:focus {
+	color: #fff;
+	padding: 10px 18px;
+	border-radius: 100px;
+	background: #0098ff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #0098ff 0%, #5214e9 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #0098ff 0%,#5214e9 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #0098ff 0%,#5214e9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0098ff', endColorstr='#5214e9',GradientType=1 ); /* IE6-9 */
+}
+
+.github-icon {
+	position: absolute;
+	width: 20px;
+	right: 9px;
+	opacity: 0;
+	transition: 1s;
+}
+
+/* ARROW */
+
+.hero-arrow-container {
+	animation-name: arrow;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+.hero-arrow-text {
+	margin-bottom: 0.5rem;
+}
+
+.hero-arrow {
+	width: 38px;
+}
+
+/* Z. ***************     MEDIA QUERIES     ****************** */
+/* *********************************************************** */
+
+@media (pointer: fine) {
+    .hero-github-link:hover {
+		color: #fff;
+		padding-right: 36px;
+	}
+
+    .hero-github-link:hover .github-icon {
+		opacity: 1;
+	}
+}
+
+@media only screen and (max-width: 1440px) { 
+    /* WRAPPER BREAK (1440) */
+}
+
+@media only screen and (max-width: 1050px) { 
+    /* SMALL DESKTOP */
+}
+
+@media only screen and (max-width: 960px) { 
+    /* TABLET */
+}
+
+@media only screen and (max-width: 600px) { 
+    /* MOBILE */
+}
+
+@media only screen and (max-width: 360px) { 
+    /* SMALL FIXES */
 }

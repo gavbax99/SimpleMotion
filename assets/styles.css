@@ -91,6 +91,7 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 
 .fs-1 { font-size: 2.5rem; }
 .fs-2 { font-size: 2rem; }
+.fs-3 { font-size: 1.5rem; }
 .fw-700 { font-weight: 700; }
 
 @keyframes arrow {
@@ -98,6 +99,10 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 	50%  { padding-top: 1rem; }
 	100% { padding-top: 0; }
 }
+
+.ct-ele { color: #6293ff; }
+.ct-class { color: #96deff; }
+.ct-sm { color: rgb(63, 226, 30); }
 
 /* 1. ***************         SETUP         ****************** */
 /* *********************************************************** */
@@ -123,12 +128,25 @@ body {
 	z-index: 99999;
 }
 
+/* 2. ***************         SETUP         ****************** */
+/* *********************************************************** */
+
 .content-wrapper {
 	width: 100%;
-	max-width: 1000px;
+	max-width: 1100px;
 }
 
-/* 1. ***************         STYLES        ****************** */
+.code-snippet {
+	padding: 1px 6px 2px 6px;
+    font-size: 90%;
+    border-radius: 3px;
+    background-color: #2c2c2c;
+	color: #fff;
+	white-space: nowrap;
+    font-family: 'Source Code Pro', monospace;
+}
+
+/* 3. ***************         STYLES        ****************** */
 /* *********************************************************** */
 
 /* HERO */
@@ -183,12 +201,14 @@ h1 {
 	margin-bottom: 1rem;
 }
 
-.hero-github-link,
-.hero-github-link:visited,
-.hero-github-link:focus {
+.github-link,
+.github-link:visited,
+.github-link:focus {
+	position: relative;
 	color: #fff;
 	padding: 10px 18px;
 	border-radius: 100px;
+	/* transition: 1s; */
 	background: #0098ff; /* Old browsers */
 	background: -moz-linear-gradient(left,  #0098ff 0%, #5214e9 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(left,  #0098ff 0%,#5214e9 100%); /* Chrome10-25,Safari5.1-6 */
@@ -199,7 +219,7 @@ h1 {
 .github-icon {
 	position: absolute;
 	width: 20px;
-	right: 9px;
+	right: 10px;
 	opacity: 0;
 	transition: 1s;
 }
@@ -223,23 +243,22 @@ h1 {
 /* ABOUT */
 
 .about-container {
+	position: relative;
 	width: 100%;
 	background-color: #c2e6ff;
 	padding: 4rem;
 }
 
 .about-desc-container {
-	width: 60%;
-	/* border: 1px solid green; */
+	width: 66%;
 }
 
 .about-bars-container {
-	width: 30%;
-	/* border: 1px solid green; */
+	width: 27%;
 }
 
 .about-desc-title {
-	margin-bottom: 1.3rem;
+	margin-bottom: 1rem;
 }
 
 .about-motion-lines {
@@ -247,11 +266,60 @@ h1 {
 	width: 28px;
 }
 
+.about-desc {
+	margin-bottom: 1rem;
+	line-height: 1.4;
+}
+
+.about-list {
+	line-height: 1.75;
+	margin-bottom: 1.6rem;
+}
+
+.about-list-text {
+	position: relative;
+}
+
+.about-list-text::after {
+	position: absolute;
+	content: "";
+	width: 50%;
+	height: 4px;
+	border-radius: 4px;
+	left: 0;
+    top: 26px;
+}
+
+.about-list li:nth-child(1) .about-list-text::after {
+	background-color: #107efb;
+	width: 20%;
+}
+
+.about-list li:nth-child(2) .about-list-text::after {
+	background-color: #2163f6;
+	width: 28%;
+}
+
+.about-list li:nth-child(3) .about-list-text::after {
+	background-color: #3149f2;
+	width: 36%;
+}
+
+.about-list li:nth-child(4) .about-list-text::after {
+	background-color: #422eed;
+	width: 44%;
+}
+
+.about-list li:nth-child(5) .about-list-text::after {
+	background-color: #5214e9;
+	width: 52%;
+}
+
 .about-bar {
     width: 90%;
     height: 35px;
     border-radius: 40px;
-	margin-bottom: 1.6rem;
+	margin-bottom: 1.65rem;
 }
 
 .about-bar:nth-child(odd) {
@@ -294,36 +362,101 @@ h1 {
 	margin-bottom: 0;
 }
 
+.about-swoosh {
+	width: 100%;
+}
+
+/* EXAMPLES */
+
+.example-container {
+	position: relative;
+	width: 100%;
+	padding: 4rem;
+}
+
+.example-title-container {
+	width: 100%;
+
+}
+
+.example-title {
+	margin-bottom: 2rem;
+}
+
+.example {
+	width: 100%;
+}
+
+.exmaple-number-container {
+	min-width: 50px;
+	max-width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #0098ff;
+	margin-right: 1rem;
+}
+
+.exmaple-number {
+	color: #fff;
+}
+
+.example-code-container {
+	width: 100%;
+}
+
+.example-code-title {
+	padding-top: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.example-code-box {
+	width: 43%;
+	padding: 0.75rem;
+	margin-left: calc(50px + 1rem);
+    font-size: 90%;
+    border-radius: 3px;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.example-code {
+	/* white-space: pre; */
+}
+
+.example-demo-container {
+	width: 46%;
+	border: 1px solid grey;
+	border-radius: 3px;
+	min-height: 400px;
+}
+
 /* Z. ***************     MEDIA QUERIES     ****************** */
 /* *********************************************************** */
 
 @media (pointer: fine) {
-    .hero-github-link:hover {
+    .github-link:hover {
 		color: #fff;
 		padding-right: 36px;
 	}
 
-    .hero-github-link:hover .github-icon {
+    .github-link:hover .github-icon {
 		opacity: 1;
 	}
 }
-
-@media only screen and (max-width: 1440px) { 
-    /* WRAPPER BREAK (1440) */
+ 
+@media only screen and (max-width: 1200px) {
+	/* Small desktops */
 }
-
-@media only screen and (max-width: 1050px) { 
-    /* SMALL DESKTOP */
+ 
+@media only screen and (max-width: 991px) {
+	/* Tablets */
 }
-
-@media only screen and (max-width: 960px) { 
-    /* TABLET */
+ 
+@media only screen and (max-width: 767px) {
+	/* Large phones */
 }
-
-@media only screen and (max-width: 600px) { 
-    /* MOBILE */
-}
-
-@media only screen and (max-width: 360px) { 
-    /* SMALL FIXES */
+ 
+@media only screen and (max-width: 575px) {
+	/* Small fixes */
 }

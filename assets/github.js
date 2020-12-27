@@ -10,7 +10,7 @@ window.onload = function() {
 
 	// Constants
 	const animInterval   = 100;
-	const revealPosition = 0.8;
+	const revealPosition = 0.65;
 
 	// =============================================
 
@@ -46,8 +46,8 @@ window.onload = function() {
 		// Changes in window height can cause unexpected behavior so we calculate the window's height every scrollInterval
 		const windowInnerHeight = window.innerHeight;
 
-		// When a SimpleMotion element is animated, the counter increments; animated elements will be removed from the nodelist 
-		let counter = 0;
+		// When a SimpleMotion element is animated, the element is added to this array; animated elements will be removed from the nodelist 
+		let eleToRemove = [];
 		
 		// For each element in the nodelist, check to see if it should animate based on scroll position
 		animElementArr.forEach(ele => {
@@ -63,12 +63,12 @@ window.onload = function() {
 					animateElement(ele);
 				}
 
-				counter++
+				eleToRemove = [...eleToRemove, ele];
 			};
 		});
 
 		// Remove animated elements from the nodelist
-		animElementArr = [].slice.call(animElementArr, counter);
+		animElementArr = animElementArr.filter(ele => !eleToRemove.includes(ele));
 
 		// When all SimpleMotion elements have been animated and the nodelist is empty, clear our scrollInterval
 		if (animElementArr.length <= 0) clearInterval(scrollInterval);

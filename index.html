@@ -16,6 +16,7 @@
 	<!-- Style links -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
 </head>
 
@@ -42,7 +43,7 @@
 					<span data-sm data-sm-delay="650">HTML elements&nbsp;</span>
 					<span data-sm data-sm-delay="800">on-scroll.&nbsp;</span>
 				</p>
-				<a data-sm data-sm-delay="1000" class="flex-full flex-row hero-github-link" href="https://github.com/gavbax99/SimpleMotion" target="_blank">
+				<a data-sm data-sm-delay="1000" class="flex-full flex-row github-link" href="https://github.com/gavbax99/SimpleMotion" target="_blank">
 					View on Github
 					<img class="github-icon" src="./assets/images/github-logo_white.svg" />
 				</a>
@@ -63,36 +64,95 @@
 			<!-- About description -->
 			<div class="flex-full flex-col flex-ai-fs about-desc-container">
 				<p class="fs-2 fw-700 about-desc-title"> 
-					Give your elements <span style="white-space: nowrap; font-style: italic;"><img class="about-motion-lines" src="./assets/images/motion-lines.svg">motion</span>
+					Give Your <span style="white-space: nowrap;">Elements<span style="font-style: italic;">&nbsp;<img class="about-motion-lines" src="./assets/images/motion-lines.svg">Motion</span></span>
 				</p>
 
 				<p class="about-desc">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quo ipsum asperiores nostrum dicta, porro corrupti blanditiis! Quibusdam doloribus unde quaerat in ratione excepturi, mollitia, perferendis sed est, rem maiores!
+					Simple to implement and easy to use. Link the JavaScript file above the closing body tag of your HTML and add a <span class="code-snippet">data-sm</span> attribute to any element you want to animate.
 				</p>
 
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
+				<p class="about-desc">
+					By default, SimpleMotion-enabled elements fade-in as the user scrolls them into view (like the colored bars on the right). However, you can customize:
+				</p>
 
+				<ul class="about-list">
+					<li><p class="about-list-text">Distance travelled</p></li>
+					<li><p class="about-list-text">Animation duration</p></li>
+					<li><p class="about-list-text">Ending CSS transform</p></li>
+					<li><p class="about-list-text">Delay before animating</p></li>
+					<li><p class="about-list-text">Starting and ending opacity</p></li>
+				</ul>
+
+				<a class="flex-full flex-row github-link" style="transition: 1s;" href="https://github.com/gavbax99/SimpleMotion" target="_blank">
+					View Documentation
+					<img class="github-icon" src="./assets/images/github-logo_white.svg" />
+				</a>
+			</div>
+			
 			<!-- About bars -->
 			<div class="flex-full flex-col about-bars-container">
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="-50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="-50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="-50" class="about-bar"></div>
-				<div data-sm data-sm-dist-y="0" data-sm-dist-x="50" class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+				<div data-sm class="about-bar"></div>
+			</div>
+		</div>
+	</section>
+	<img class="about-swoosh" src="./assets/images/blue-swoosh-2.svg" />
+
+	<!-- Examples -->
+	<section class="flex-full example-container">
+		<div class="flex-full flex-col flex-ai-fs content-wrapper">
+
+			<p class="fs-2 fw-700 example-title">SimpleMotion Examples:</p>
+
+			<!-- E1 -->
+			<div class="flex-full flex-col flex-jc-sb flex-ai-fs example">
+				<!-- Title -->
+				<div class="flex-full flex-row flex-jc-fs flex-ai-fs example-title-container">
+					<div class="flex-full exmaple-number-container">
+						<p class="flex-full fs-3 fw-700 exmaple-number">1</p>
+					</div>
+
+					<p class="fs-3 example-code-title">Transform distance</p>
+				</div>
+
+				<!-- Demo -->
+				<div class="flex-full flex-row flex-jc-sb flex-ai-fs example-code-container">
+					<!-- Code -->
+					<div class="example-code-box">
+						<code class="example-code">
+							&lt;<span class="ct-ele">p</span><br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm</span><br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm-dist-x</span>="50"<br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm-dist-y</span>="0"<br>
+							&nbsp;&nbsp;<span class="ct-class">class</span>="example-bar"&gt;<br>
+							&nbsp;&nbsp;Moves left!<br>
+							&lt;/<span class="ct-ele">p</span>&gt;<br>
+							<br>
+							&lt;<span class="ct-ele">p</span><br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm</span><br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm-dist-x</span>="-50"<br>
+							&nbsp;&nbsp;<span class="ct-sm">data-sm-dist-y</span>="0"<br>
+							&nbsp;&nbsp;<span class="ct-class">class</span>="example-bar"&gt;<br>
+							&nbsp;&nbsp;Moves right!<br>
+							&lt;/<span class="ct-ele">p</span>&gt;<br>
+						</code>
+					</div>
+
+					<!-- Demo -->
+					<div class="flex-full flex-jc-fs flex-ai-fs example-demo-container">
+						
+
+					</div>
+				</div>
 			</div>
 
 		</div>
 	</section>
-
 
 
 

@@ -94,6 +94,8 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 .fs-3 { font-size: 1.5rem; }
 .fw-700 { font-weight: 700; }
 
+.w-100 { width: 100%; }
+
 @keyframes arrow {
 	0%   { padding-top: 0; }
 	50%  { padding-top: 1rem; }
@@ -103,6 +105,7 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 .ct-ele { color: #6293ff; }
 .ct-class { color: #96deff; }
 .ct-sm { color: rgb(63, 226, 30); }
+.ct-attr { color: rgb(255, 141, 65); }
 
 /* 1. ***************         SETUP         ****************** */
 /* *********************************************************** */
@@ -141,7 +144,7 @@ body {
     font-size: 90%;
     border-radius: 3px;
     background-color: #2c2c2c;
-	color: #fff;
+	color: rgb(63, 226, 30);
 	white-space: nowrap;
     font-family: 'Source Code Pro', monospace;
 }
@@ -380,7 +383,7 @@ h1 {
 }
 
 .example-title {
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 }
 
 .example {
@@ -392,8 +395,15 @@ h1 {
 	max-width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	background-color: #0098ff;
 	margin-right: 1rem;
+}
+
+.exmaple-number-container-1 {
+	background-color: #0098ff;
+}
+
+.exmaple-number-container-2 {
+	background-color: #5214e9;
 }
 
 .exmaple-number {
@@ -402,6 +412,7 @@ h1 {
 
 .example-code-container {
 	width: 100%;
+	margin-bottom: 4rem;
 }
 
 .example-code-title {
@@ -425,11 +436,114 @@ h1 {
 }
 
 .example-demo-container {
-	width: 46%;
-	border: 1px solid grey;
-	border-radius: 3px;
-	min-height: 400px;
+    width: 46%;
+    /* border: 2px solid #0098ff; */
+    /* background-color: rgb(244 244 244); */
+    /* box-shadow: 0px 4px 6px 1px rgba(0, 0, 0, 0.05); */
+    border-radius: 3px;
 }
+
+.example-demo-1 {
+	min-height: 312px;
+}
+
+.example-dist {
+	text-align: center;
+	width: 75%;
+	border-radius: 100px;
+	padding: 1.5rem 0.5rem;
+	margin-bottom: 1.65rem;
+	font-size: 1.25rem;
+	color: #fff;
+	background-color: #0098ff;
+}
+
+.example-dist:last-child {
+	margin-bottom: 0;
+}
+
+.example-demo-2 {
+	position: relative;
+	min-height: 407px;
+}
+
+.example-time {
+	text-align: center;
+	width: 75%;
+	border-radius: 100px;
+	padding: 1.5rem 0.5rem;
+	margin-bottom: 1.65rem;
+	font-size: 1.25rem;
+	color: #fff;
+	background-color: #5214e9;
+}
+
+.example-time:last-child {
+	margin-bottom: 0;
+}
+
+.example-demo-3 {
+	position: relative;
+	min-height: 293px;
+}
+
+.example-delay {
+	position: absolute;
+    left: 13%;
+    top: 36%;
+	text-align: center;
+	width: 75%;
+	border-radius: 100px;
+	padding: 1.5rem 0.5rem;
+	font-size: 1.25rem;
+	color: #fff;
+	background-color: #0098ff;
+}
+
+.example-demo-4 {
+	min-height: 236px;
+}
+
+.example-transform {
+	text-align: center;
+	width: 49.5%;
+	border-radius: 100px;
+	padding: 1rem 0.33rem;
+	font-size: 0.825rem;
+	color: #fff;
+	background-color: #5214e9;
+}
+
+.example-demo-5 {
+	min-height: 274px;
+}
+
+.example-nest-1,
+.example-nest-2 {
+	min-width: 75%;
+	border-radius: 100px;
+	padding: 1rem;
+}
+
+.example-nest-1 {
+	background-color: #5214e9;
+}
+
+.example-nest-2 {
+	background-color: #2956f4;
+}
+
+.example-nest-3 {
+	text-align: center;
+	min-width: 75%;
+	border-radius: 100px;
+	padding: 1rem;
+	color: #fff;
+	background-color: #0098ff;
+	font-size: 1.25rem;
+}
+
+
 
 /* Z. ***************     MEDIA QUERIES     ****************** */
 /* *********************************************************** */
@@ -449,7 +563,7 @@ h1 {
 	/* Small desktops */
 }
  
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 920px) {
 	/* Tablets */
 }
  

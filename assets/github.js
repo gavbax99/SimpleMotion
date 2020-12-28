@@ -14,10 +14,11 @@ window.onload = function() {
 
 	// =============================================
 
-	// Build our SimpleMotion nodelist from all HTML elements with the "data-sm" attribute
-	let animElementArr = document.querySelectorAll("[data-sm]");
+	// Build our SimpleMotion array from all HTML elements with the "data-sm" attribute
+	let nodeList = document.querySelectorAll("[data-sm]");
+	let animElementArr = Array.prototype.slice.call(nodeList);
 
-	// Setup initial CSS attributes for each element in the nodelist
+	// Setup initial CSS attributes for each element in the array
 	animElementArr.forEach(ele => {
 		const distanceToTravelX = ele.getAttribute("data-sm-dist-x")     ? ele.getAttribute("data-sm-dist-x")     : def_distanceToTravelX;
 		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")     ? ele.getAttribute("data-sm-dist-y")     : def_distanceToTravelY;
@@ -46,10 +47,10 @@ window.onload = function() {
 		// Changes in window height can cause unexpected behavior so we calculate the window's height every scrollInterval
 		const windowInnerHeight = window.innerHeight;
 
-		// When a SimpleMotion element is animated, the element is added to this array; animated elements will be removed from the nodelist 
+		// When a SimpleMotion element is animated, the element is added to this array; animated elements will be removed from the array 
 		let eleToRemove = [];
 		
-		// For each element in the nodelist, check to see if it should animate based on scroll position
+		// For each element in the array, check to see if it should animate based on scroll position
 		animElementArr.forEach(ele => {
 			const eleTop          = ele.getBoundingClientRect().top + window.scrollY;
 			const distanceOffsetY = ele.getAttribute("data-sm-dist-y") ? ele.getAttribute("data-sm-dist-y") : def_distanceToTravelY;
@@ -67,10 +68,10 @@ window.onload = function() {
 			};
 		});
 
-		// Remove animated elements from the nodelist
+		// Remove animated elements from the array
 		animElementArr = animElementArr.filter(ele => !eleToRemove.includes(ele));
 
-		// When all SimpleMotion elements have been animated and the nodelist is empty, clear our scrollInterval
+		// When all SimpleMotion elements have been animated and the array is empty, clear our scrollInterval
 		if (animElementArr.length <= 0) clearInterval(scrollInterval);
 	};
 
@@ -97,4 +98,40 @@ window.onload = function() {
 
 	// Fire handleAnimation on page load to animate any in-view SimpleMotion elements before the user scrolls
 	handleAnimation();
+
+
+
+	// document.getElementById("ex-1-reset").addEventListener("click", () => {
+	// 	const e1 = document.getElementById("ex-1-1");
+	// 	const e2 = document.getElementById("ex-1-2");
+
+	// 	transitionChange([e1, e2], "0s");
+
+	// 	setTimeout(() => {animateSingle([e1, e2])}, 1000);
+	// });
+
+	// transitionChange = (nodeArr, transitionTime) => {
+	// 	nodeArr.forEach(ele => {
+	// 		ele.style.transition = transitionTime;
+	// 	})
+	// }
+
+	// animateSingle = (nodeArr) => {
+	// 	nodeArr[0].style.opacity = "0";
+	// 	nodeArr[0].style.transform = "translate(50px, 0)";
+
+	// 	continueAnimateSingle(nodeArr);
+	// };
+
+	// continueAnimateSingle = (nodeArr) => {
+	// 	transitionChange(nodeArr, "1s");
+	// 	finalAnimate(nodeArr);
+	// };
+
+	// finalAnimate = (nodeArr) => {
+	// 	nodeArr.forEach(ele => {
+	// 		ele.style.transform = "translate(0, 0)"
+	// 		ele.style.opacity = "1";
+	// 	});
+	// }
 };

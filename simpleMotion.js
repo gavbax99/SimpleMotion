@@ -15,7 +15,8 @@ window.onload = function() {
 	// =============================================
 
 	// Build our SimpleMotion nodelist from all HTML elements with the "data-sm" attribute
-	let animElementArr = document.querySelectorAll("[data-sm]");
+	let nodeList = document.querySelectorAll("[data-sm]");
+	let animElementArr = Array.prototype.slice.call(nodeList);
 
 	// Setup initial CSS attributes for each element in the nodelist
 	animElementArr.forEach(ele => {

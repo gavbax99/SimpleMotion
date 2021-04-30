@@ -10,7 +10,7 @@ window.onload = function() {
 
 	// Constants
 	const animInterval   = 100;
-	const revealPosition = 0.8;
+	const revealPosition = 0.75;
 
 	// =============================================
 
@@ -52,7 +52,7 @@ window.onload = function() {
 		
 		// For each element in the nodelist, check to see if it should animate based on scroll position
 		animElementArr.forEach(ele => {
-			const eleTop          = ele.getBoundingClientRect().top + window.scrollY;
+			const eleTop = ele.getBoundingClientRect().top + window.scrollY;
 			const distanceOffsetY = ele.getAttribute("data-sm-dist-y") ? ele.getAttribute("data-sm-dist-y") : def_distanceToTravelY;
 			
 			if (window.scrollY > (eleTop - (windowInnerHeight * revealPosition) - distanceOffsetY)) {
@@ -77,9 +77,9 @@ window.onload = function() {
 
 	// Animating the element
 	animateElement = (ele) => {
-		const animationTime     = ele.getAttribute("data-sm-time") ? ele.getAttribute("data-sm-time") : def_animationTime;
-		const animationEaseType = ele.getAttribute("data-sm-ease") ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
-		const finalOpacity      = ele.getAttribute("data-sm-final-opac") ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
+		const animationTime     = ele.getAttribute("data-sm-time")            ? ele.getAttribute("data-sm-time") : def_animationTime;
+		const animationEaseType = ele.getAttribute("data-sm-ease")            ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
+		const finalOpacity      = ele.getAttribute("data-sm-final-opac")      ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
 		const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
 
 		ele.style.transition               = animationTime;

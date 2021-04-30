@@ -207,7 +207,7 @@ h1 {
 }
 
 .github-link,
-.github-link:visited,
+.github-link:active,
 .github-link:focus {
 	position: relative;
 	color: #fff;
@@ -232,6 +232,7 @@ h1 {
 /* ARROW */
 
 .hero-arrow-container {
+  opacity: 0;
 	animation-name: arrow;
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
@@ -510,7 +511,7 @@ h1 {
 
 .example-demo-3 {
 	position: relative;
-	min-height: 293px;
+	min-height: 358px;
 }
 
 .example-delay {
@@ -527,7 +528,7 @@ h1 {
 }
 
 .example-demo-4 {
-	min-height: 236px;
+	min-height: 320px;
 }
 
 .example-transform {
@@ -541,7 +542,7 @@ h1 {
 }
 
 .example-demo-5 {
-	min-height: 274px;
+	min-height: 339px;
 }
 
 .example-nest-1,
@@ -576,10 +577,33 @@ footer {
 }
 
 .footer-swoosh {
+  position: relative;
+  top: 2px;
   width: 100%;
 }
 
+.footer-container {
+  width: 100%;
+  background-color: #c2e6ff;
+  padding: 2rem 4rem 6rem;
+}
 
+.footer-content {
+  /* padding: 4rem; */
+}
+
+.footer-link,
+.footer-link:active,
+.footer-link:focus,
+.footer-link:visited {
+  font-weight: 500;
+  color: #5214e9;
+  text-decoration: underline;
+}
+
+.footer-github {
+  transition: 1s;
+}
 
 /* Z. ***************     MEDIA QUERIES     ****************** */
 /* *********************************************************** */

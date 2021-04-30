@@ -10,7 +10,7 @@ window.onload = function() {
 
 	// Constants
 	const animInterval   = 100;
-	const revealPosition = 0.65;
+	const revealPosition = 0.75;
 
 	// =============================================
 
@@ -24,11 +24,8 @@ window.onload = function() {
 		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")     ? ele.getAttribute("data-sm-dist-y")     : def_distanceToTravelY;
 		const startingOpacity   = ele.getAttribute("data-sm-start-opac") ? ele.getAttribute("data-sm-start-opac") : def_startingOpacity;
 
-		ele.style.opacity = startingOpacity;
+		ele.style.opacity   = startingOpacity;
 		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px)`;
-
-    // wut
-		// ele.setAttribute("data-scroller", "false");
 	});
 
 	// Scroll listener
@@ -92,49 +89,13 @@ window.onload = function() {
 	};
 
 	// ========= PRELOADER FOR PREVIEW SITE =========
-	// const preload = document.querySelector(".preload");
-	// preload.style.opacity = 0;
-	// setTimeout(()=> {
-	// 	preload.remove();
-	// }, 1000);
+	const preload = document.querySelector(".preload");
+	preload.style.opacity = 0;
+	setTimeout(()=> {
+		preload.remove();
+	}, 1000);
 	// ========= PRELOADER FOR PREVIEW SITE =========
 
 	// Fire handleAnimation on page load to animate any in-view SimpleMotion elements before the user scrolls
 	handleAnimation();
-
-
-
-	// document.getElementById("ex-1-reset").addEventListener("click", () => {
-	// 	const e1 = document.getElementById("ex-1-1");
-	// 	const e2 = document.getElementById("ex-1-2");
-
-	// 	transitionChange([e1, e2], "0s");
-
-	// 	setTimeout(() => {animateSingle([e1, e2])}, 1000);
-	// });
-
-	// transitionChange = (nodeArr, transitionTime) => {
-	// 	nodeArr.forEach(ele => {
-	// 		ele.style.transition = transitionTime;
-	// 	})
-	// }
-
-	// animateSingle = (nodeArr) => {
-	// 	nodeArr[0].style.opacity = "0";
-	// 	nodeArr[0].style.transform = "translate(50px, 0)";
-
-	// 	continueAnimateSingle(nodeArr);
-	// };
-
-	// continueAnimateSingle = (nodeArr) => {
-	// 	transitionChange(nodeArr, "1s");
-	// 	finalAnimate(nodeArr);
-	// };
-
-	// finalAnimate = (nodeArr) => {
-	// 	nodeArr.forEach(ele => {
-	// 		ele.style.transform = "translate(0, 0)"
-	// 		ele.style.opacity = "1";
-	// 	});
-	// }
 };

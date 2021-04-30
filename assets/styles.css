@@ -102,10 +102,12 @@ a, a:hover, a:focus, a:active, a[href^="tel"] {
 	100% { padding-top: 0; }
 }
 
-.ct-ele { color: #6293ff; }
-.ct-class { color: #96deff; }
-.ct-sm { color: rgb(63, 226, 30); }
-.ct-attr { color: rgb(255, 141, 65); }
+code { color: rgb(196, 196, 196); }
+.ct-ele { color: #6591ff; }
+.ct-class { color: #7ef2ff; }
+.ct-sm { color: rgb(86, 255, 67); }
+.ct-attr { color: rgb(255, 175, 71); }
+.ct-text { color: #fff; }
 
 /* 1. ***************         SETUP         ****************** */
 /* *********************************************************** */
@@ -240,7 +242,7 @@ h1 {
 }
 
 .hero-arrow {
-	width: 38px;
+	width: 23px;
 }
 
 /* ABOUT */
@@ -388,9 +390,14 @@ h1 {
 
 .example {
 	width: 100%;
+  margin-bottom: 4rem;
 }
 
-.exmaple-number-container {
+.example:last-of-type {
+  margin-bottom: 0;
+}
+
+.example-number-container {
 	min-width: 50px;
 	max-width: 50px;
 	height: 50px;
@@ -398,21 +405,20 @@ h1 {
 	margin-right: 1rem;
 }
 
-.exmaple-number-container-1 {
+.example-number-container-1 {
 	background-color: #0098ff;
 }
 
-.exmaple-number-container-2 {
+.example-number-container-2 {
 	background-color: #5214e9;
 }
 
-.exmaple-number {
+.example-number {
 	color: #fff;
 }
 
 .example-code-container {
 	width: 100%;
-	margin-bottom: 4rem;
 }
 
 .example-code-title {
@@ -421,14 +427,18 @@ h1 {
 }
 
 .example-code-box {
-	width: 43%;
-	padding: 0.75rem;
-	margin-left: calc(50px + 1rem);
-    font-size: 90%;
-    border-radius: 3px;
-    background-color: #2c2c2c;
-    color: #fff;
-    font-family: 'Source Code Pro', monospace;
+  width: 43%;
+  margin-left: calc(50px + 1rem);
+}
+
+.example-code {
+	width: 100%;
+	padding: 0 1rem;
+  font-size: 90%;
+  border-radius: 5px 5px 0 0;
+  background-color: #1E1E1E;
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .example-code {
@@ -443,8 +453,24 @@ h1 {
     border-radius: 3px;
 }
 
+.example-reset-button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0 0 5px 5px;
+  background-color: #0098ff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+
+  outline: none;
+}
+
+.button-purple {
+  background-color: #5214e9;
+}
+
 .example-demo-1 {
-	min-height: 312px;
+	min-height: 377px;
 }
 
 .example-dist {
@@ -464,7 +490,7 @@ h1 {
 
 .example-demo-2 {
 	position: relative;
-	min-height: 407px;
+	min-height: 472px;
 }
 
 .example-time {
@@ -541,6 +567,16 @@ h1 {
 	color: #fff;
 	background-color: #0098ff;
 	font-size: 1.25rem;
+}
+
+/* footer */
+
+footer {
+  /* background-color: #c2e6ff; */
+}
+
+.footer-swoosh {
+  width: 100%;
 }
 
 

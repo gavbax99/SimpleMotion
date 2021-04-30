@@ -24,8 +24,11 @@ window.onload = function() {
 		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")     ? ele.getAttribute("data-sm-dist-y")     : def_distanceToTravelY;
 		const startingOpacity   = ele.getAttribute("data-sm-start-opac") ? ele.getAttribute("data-sm-start-opac") : def_startingOpacity;
 
-		ele.style.opacity   = startingOpacity;
+		ele.style.opacity = startingOpacity;
 		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px)`;
+
+    // wut
+		// ele.setAttribute("data-scroller", "false");
 	});
 
 	// Scroll listener
@@ -52,14 +55,14 @@ window.onload = function() {
 		
 		// For each element in the array, check to see if it should animate based on scroll position
 		animElementArr.forEach(ele => {
-			const eleTop          = ele.getBoundingClientRect().top + window.scrollY;
+			const eleTop = ele.getBoundingClientRect().top + window.scrollY;
 			const distanceOffsetY = ele.getAttribute("data-sm-dist-y") ? ele.getAttribute("data-sm-dist-y") : def_distanceToTravelY;
 			
 			if (window.scrollY > (eleTop - (windowInnerHeight * revealPosition) - distanceOffsetY)) {
 				const delay = ele.getAttribute("data-sm-delay");
 
 				if (delay) {
-					setTimeout(() => {animateElement(ele)}, delay);
+					setTimeout(() => { animateElement(ele); }, delay);
 				} else {
 					animateElement(ele);
 				}
@@ -77,23 +80,23 @@ window.onload = function() {
 
 	// Animating the element
 	animateElement = (ele) => {
-		const animationTime     = ele.getAttribute("data-sm-time") ? ele.getAttribute("data-sm-time") : def_animationTime;
-		const animationEaseType = ele.getAttribute("data-sm-ease") ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
-		const finalOpacity      = ele.getAttribute("data-sm-final-opac") ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
+		const animationTime     = ele.getAttribute("data-sm-time")            ? ele.getAttribute("data-sm-time")            : def_animationTime;
+		const animationEaseType = ele.getAttribute("data-sm-ease")            ? ele.getAttribute("data-sm-ease")            : def_animationEaseType;
+		const finalOpacity      = ele.getAttribute("data-sm-final-opac")      ? ele.getAttribute("data-sm-final-opac")      : def_finalOpacity;
 		const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
 
-		ele.style.transition               = animationTime;
+		ele.style.transitionDuration       = animationTime;
 		ele.style.transitionTimingFunction = animationEaseType;
 		ele.style.opacity                  = finalOpacity;
 		ele.style.transform                = finalTransform;
 	};
 
 	// ========= PRELOADER FOR PREVIEW SITE =========
-	const preload = document.querySelector(".preload");
-	preload.style.opacity = 0;
-	setTimeout(()=> {
-		preload.remove();
-	}, 1000);
+	// const preload = document.querySelector(".preload");
+	// preload.style.opacity = 0;
+	// setTimeout(()=> {
+	// 	preload.remove();
+	// }, 1000);
 	// ========= PRELOADER FOR PREVIEW SITE =========
 
 	// Fire handleAnimation on page load to animate any in-view SimpleMotion elements before the user scrolls

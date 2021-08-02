@@ -209,9 +209,9 @@
 					<!-- Demo -->
 					<div class="flex-full flex-col example-demo-container">
 						<div class="flex-full flex-col w-100 example-demo-2">
-							<p data-sm data-sm-time="1s" id="ex-2-1" class="example-time">1 Second</p>
-							<p data-sm data-sm-time="3s" id="ex-2-2" class="example-time">3 Seconds</p>
-							<p data-sm data-sm-time="5s" id="ex-2-3" class="example-time">5 Seconds</p>
+							<p data-sm data-sm-time="1000" id="ex-2-1" class="example-time">1 Second</p>
+							<p data-sm data-sm-time="3000" id="ex-2-2" class="example-time">3 Seconds</p>
+							<p data-sm data-sm-time="5000" id="ex-2-3" class="example-time">5 Seconds</p>
 						</div>
 					</div>
 
@@ -309,7 +309,7 @@
 					<!-- Demo -->
 					<div class="flex-full flex-col example-demo-container">
 						<div class="flex-full flex-col w-100 example-demo-4">
-							<p data-sm data-sm-dist-x="-200" data-sm-dist-y="100" data-sm-time="2s" data-sm-final-transform="translate(0, 0) scale(1.5) rotate(360deg)" id="ex-4-1" class="example-transform">Custom transform!</p>
+							<p data-sm data-sm-dist-x="-200" data-sm-dist-y="100" data-sm-time="2000" data-sm-final-transform="translate(0, 0) scale(1.5) rotate(360deg)" id="ex-4-1" class="example-transform">Custom transform!</p>
 						</div>
 					</div>
 
@@ -369,6 +369,58 @@
 				</div>
 			</div>
 			<!-- E5 -->
+
+			<!-- E6 -->
+			<div class="flex-full flex-col flex-jc-sb flex-ai-fs example">
+				<div class="flex-full flex-row flex-jc-fs flex-ai-fs example-title-container">
+					<div class="flex-full example-number-container example-number-container-2">
+						<p class="flex-full fs-3 fw-700 example-number">6</p>
+					</div>
+					<p class="fs-3 example-code-title">Scale change</p>
+				</div>
+
+				<!-- Demo -->
+				<div class="flex-full flex-row flex-jc-sb flex-ai-fs example-code-container">
+
+					<!-- Code -->
+          <div class="flex-full flex-col example-code-box">
+            <div class="example-code">
+              <pre>
+                <code>
+&lt;<span class="ct-ele">p</span>
+  <span class="ct-sm">data-sm</span>
+  <span class="ct-sm">data-sm-time</span>=<span class="ct-attr">"1500"</span>
+  <span class="ct-sm">data-sm-start-scale</span>=<span class="ct-attr">"1.5"</span>
+  <span class="ct-class">class</span>=<span class="ct-attr">"example-scale-1"</span>&gt;
+  <span class="ct-text">I start big!</span>
+&lt;/<span class="ct-ele">p</span>&gt;
+
+&lt;<span class="ct-ele">p</span>
+  <span class="ct-sm">data-sm</span>
+  <span class="ct-sm">data-sm-time</span>=<span class="ct-attr">"1500"</span>
+  <span class="ct-sm">data-sm-start-scale</span>=<span class="ct-attr">"0.25"</span>
+  <span class="ct-class">class</span>=<span class="ct-attr">"example-scale-1"</span>&gt;
+  <span class="ct-text">I start small!</span>
+&lt;/<span class="ct-ele">p</span>&gt;</code>
+              </pre>
+					  </div>
+
+            <button id="ex6" class="flex-full example-reset-button button-purple">
+              Replay Animation
+            </button>
+          </div>
+
+					<!-- Demo -->
+					<div class="flex-full flex-col example-demo-container">
+						<div class="flex-full flex-col w-100 example-demo-6">
+              <p data-sm data-sm-start-scale="1.5" data-sm-time="1500" id="ex-6-1" class="example-scale">I start big!</p>
+              <p data-sm data-sm-start-scale="0.25" data-sm-time="1500" id="ex-6-2" class="example-scale">I start small!</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- E6 -->
 
 		</div>
 	</section>

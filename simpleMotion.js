@@ -1,11 +1,12 @@
 window.onload = function() {
 	// Default motion values
-	const def_animationEaseType = "ease";
-	const def_animationTime     = "1000ms";
 	const def_distanceToTravelX = 0;
 	const def_distanceToTravelY = 30;
+  const def_startingScale     = 1;
+	const def_animationTime     = 1000;
 	const def_startingOpacity   = 0;
 	const def_finalOpacity      = 1;
+	const def_animationEaseType = "ease";
 	const def_finalTransform    = "translate(0, 0)";
 
 	// Constants
@@ -14,18 +15,19 @@ window.onload = function() {
 
 	// =============================================
 
-	// Build our SimpleMotion nodelist from all HTML elements with the "data-sm" attribute
+	// Build our SimpleMotion array from all HTML elements with the "data-sm" attribute
 	let nodeList = document.querySelectorAll("[data-sm]");
 	let animElementArr = Array.prototype.slice.call(nodeList);
 
-	// Setup initial CSS attributes for each element in the nodelist
+	// Setup initial CSS attributes for each element in the array
 	animElementArr.forEach(ele => {
-		const distanceToTravelX = ele.getAttribute("data-sm-dist-x")     ? ele.getAttribute("data-sm-dist-x")     : def_distanceToTravelX;
-		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")     ? ele.getAttribute("data-sm-dist-y")     : def_distanceToTravelY;
-		const startingOpacity   = ele.getAttribute("data-sm-start-opac") ? ele.getAttribute("data-sm-start-opac") : def_startingOpacity;
+		const distanceToTravelX = ele.getAttribute("data-sm-dist-x")      ? ele.getAttribute("data-sm-dist-x")      : def_distanceToTravelX;
+		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")      ? ele.getAttribute("data-sm-dist-y")      : def_distanceToTravelY;
+		const startingScale     = ele.getAttribute("data-sm-start-scale") ? ele.getAttribute("data-sm-start-scale") : def_startingScale;
+		const startingOpacity   = ele.getAttribute("data-sm-start-opac")  ? ele.getAttribute("data-sm-start-opac")  : def_startingOpacity;
 
 		ele.style.opacity   = startingOpacity;
-		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px)`;
+		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px) scale(${startingScale})`;
 	});
 
 	// Scroll listener
@@ -47,10 +49,10 @@ window.onload = function() {
 		// Changes in window height can cause unexpected behavior so we calculate the window's height every scrollInterval
 		const windowInnerHeight = window.innerHeight;
 
-		// When a SimpleMotion element is animated, the element is added to this array; animated elements will be removed from the nodelist 
+		// When a SimpleMotion element is animated, the element is added to this array; animated elements will be removed from the array 
 		let eleToRemove = [];
 		
-		// For each element in the nodelist, check to see if it should animate based on scroll position
+		// For each element in the array, check to see if it should animate based on scroll position
 		animElementArr.forEach(ele => {
 			const eleTop = ele.getBoundingClientRect().top + window.scrollY;
 			const distanceOffsetY = ele.getAttribute("data-sm-dist-y") ? ele.getAttribute("data-sm-dist-y") : def_distanceToTravelY;
@@ -59,7 +61,7 @@ window.onload = function() {
 				const delay = ele.getAttribute("data-sm-delay");
 
 				if (delay) {
-					setTimeout(() => {animateElement(ele)}, delay);
+					setTimeout(() => { animateElement(ele); }, delay);
 				} else {
 					animateElement(ele);
 				}
@@ -68,21 +70,21 @@ window.onload = function() {
 			};
 		});
 
-		// Remove animated elements from the nodelist
+		// Remove animated elements from the array
 		animElementArr = animElementArr.filter(ele => !eleToRemove.includes(ele));
 
-		// When all SimpleMotion elements have been animated and the nodelist is empty, clear our scrollInterval
+		// When all SimpleMotion elements have been animated and the array is empty, clear our scrollInterval
 		if (animElementArr.length <= 0) clearInterval(scrollInterval);
 	};
 
 	// Animating the element
 	animateElement = (ele) => {
-		const animationTime     = ele.getAttribute("data-sm-time")            ? ele.getAttribute("data-sm-time") : def_animationTime;
-		const animationEaseType = ele.getAttribute("data-sm-ease")            ? ele.getAttribute("data-sm-ease") : def_animationEaseType;
-		const finalOpacity      = ele.getAttribute("data-sm-final-opac")      ? ele.getAttribute("data-sm-final-opac") : def_finalOpacity;
+		const animationTime     = ele.getAttribute("data-sm-time")            ? ele.getAttribute("data-sm-time")            : def_animationTime;
+		const animationEaseType = ele.getAttribute("data-sm-ease")            ? ele.getAttribute("data-sm-ease")            : def_animationEaseType;
+		const finalOpacity      = ele.getAttribute("data-sm-final-opac")      ? ele.getAttribute("data-sm-final-opac")      : def_finalOpacity;
 		const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
 
-		ele.style.transition               = animationTime;
+		ele.style.transitionDuration       = `${animationTime}ms`;
 		ele.style.transitionTimingFunction = animationEaseType;
 		ele.style.opacity                  = finalOpacity;
 		ele.style.transform                = finalTransform;

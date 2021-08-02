@@ -1,11 +1,12 @@
 window.onload = function() {
 	// Default motion values
-	const def_animationEaseType = "ease";
-	const def_animationTime     = "1000ms";
 	const def_distanceToTravelX = 0;
 	const def_distanceToTravelY = 30;
+  const def_startingScale     = 1;
+	const def_animationTime     = 1000;
 	const def_startingOpacity   = 0;
 	const def_finalOpacity      = 1;
+	const def_animationEaseType = "ease";
 	const def_finalTransform    = "translate(0, 0)";
 
 	// Constants
@@ -20,12 +21,13 @@ window.onload = function() {
 
 	// Setup initial CSS attributes for each element in the array
 	animElementArr.forEach(ele => {
-		const distanceToTravelX = ele.getAttribute("data-sm-dist-x")     ? ele.getAttribute("data-sm-dist-x")     : def_distanceToTravelX;
-		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")     ? ele.getAttribute("data-sm-dist-y")     : def_distanceToTravelY;
-		const startingOpacity   = ele.getAttribute("data-sm-start-opac") ? ele.getAttribute("data-sm-start-opac") : def_startingOpacity;
+		const distanceToTravelX = ele.getAttribute("data-sm-dist-x")      ? ele.getAttribute("data-sm-dist-x")      : def_distanceToTravelX;
+		const distanceToTravelY = ele.getAttribute("data-sm-dist-y")      ? ele.getAttribute("data-sm-dist-y")      : def_distanceToTravelY;
+		const startingScale     = ele.getAttribute("data-sm-start-scale") ? ele.getAttribute("data-sm-start-scale") : def_startingScale;
+		const startingOpacity   = ele.getAttribute("data-sm-start-opac")  ? ele.getAttribute("data-sm-start-opac")  : def_startingOpacity;
 
 		ele.style.opacity   = startingOpacity;
-		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px)`;
+		ele.style.transform = `translate(${distanceToTravelX}px, ${distanceToTravelY}px) scale(${startingScale})`;
 	});
 
 	// Scroll listener
@@ -82,7 +84,7 @@ window.onload = function() {
 		const finalOpacity      = ele.getAttribute("data-sm-final-opac")      ? ele.getAttribute("data-sm-final-opac")      : def_finalOpacity;
 		const finalTransform    = ele.getAttribute("data-sm-final-transform") ? ele.getAttribute("data-sm-final-transform") : def_finalTransform;
 
-		ele.style.transitionDuration       = animationTime;
+		ele.style.transitionDuration       = `${animationTime}ms`;
 		ele.style.transitionTimingFunction = animationEaseType;
 		ele.style.opacity                  = finalOpacity;
 		ele.style.transform                = finalTransform;

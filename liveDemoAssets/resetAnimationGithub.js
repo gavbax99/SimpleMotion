@@ -130,3 +130,27 @@ document.getElementById("ex5").onclick = () => {
     ex3.style.transform = "translate(0px, 0px)";
   }, 75);
 };
+
+// Ex 6
+document.getElementById("ex6").onclick = () => {
+  let ex1 = document.getElementById("ex-6-1");
+  let ex2 = document.getElementById("ex-6-2");
+
+  ex1.style.transitionDuration = "0ms";
+  ex1.style.opacity = 0;
+  ex1.style.transform = "translate(0px, 30px) scale(1.5)";
+  
+  ex2.style.transitionDuration = "0ms";
+  ex2.style.opacity = 0;
+  ex2.style.transform = "translate(0px, 30px) scale(0.25)";
+
+  setTimeout(() => {
+    ex1.style.transitionDuration = "1500ms";
+    ex1.style.opacity = 1;
+    ex1.style.transform = "translate(0px, 0px)";
+    
+    ex2.style.transitionDuration = "1500ms";
+    ex2.style.opacity = 1;
+    ex2.style.transform = "translate(0px, 0px)";
+  }, 75);
+};
